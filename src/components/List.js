@@ -13,7 +13,9 @@ const List = React.memo(
         className="flex items-center gap-x-8 p-6 w-full h-10 border-2 border-gray-200 list"
       >
         <span className="w-1/3 ">{item.name}</span>
-        <span className="w-1/3 text-center">{item.cost}</span>
+        <span className="w-1/3 text-center">
+          {`${Number(item.cost).toLocaleString()}₩`}
+        </span>
         <span className="flex justify-end gap-x-4 w-1/3 ">
           <button
             onClick={onClickEditButton}
