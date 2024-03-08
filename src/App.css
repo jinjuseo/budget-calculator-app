@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+body {
+  background-color: rgb(251 191 36);
+}
+.list {
+  transition: transform 300ms ease-in-out;
+}
+.list:hover {
+  transform: scale(1.02);
+}
+
+.create,
+.edit {
+  /* transition: background-color ease-in-out 0.3s; */
+  background-color: rgba(0, 128, 0, 0.8);
+  color: white;
+  opacity: 1 !important;
+}
+.delete {
+  background-color: rgba(255, 0, 0, 0.8);
+  color: white;
+  opacity: 1 !important;
+}
+.hide {
+  opacity: 0;
+}
+.notification {
+  opacity: 0;
+  border: none;
+  border-radius: 4px;
+  transition-property: opacity;
+  transition-duration: 0.5s;
+}
