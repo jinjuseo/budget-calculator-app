@@ -2,9 +2,12 @@ import "./App.css";
 import React, { useEffect, useState, useCallback } from "react";
 import { Form, Lists, Notification } from "./components";
 import DeleteRoundedIcon from "@mui/icons-material/DeleteRounded";
+const initializePayments = localStorage.getItem("payment-list")
+  ? JSON.parse(localStorage.getItem("payment-list"))
+  : [];
 const App = () => {
   const [totalCosts, setTotalCosts] = useState(0);
-  const [payments, setPayments] = useState([]);
+  const [payments, setPayments] = useState(initializePayments);
   const [notification, setNotification] = useState("");
   const [isEditing, setIsEditing] = useState(false);
   const [editedPayment, setEditedPayment] = useState({});
@@ -22,6 +25,7 @@ const App = () => {
     console.log(payments);
     setTotalCosts(getTotalCosts());
     setIsEditing(false);
+    localStorage.setItem("payment-list", JSON.stringify(payments));
   }, [payments]);
 
   const showNotification = useCallback((type) => {
@@ -73,7 +77,7 @@ const App = () => {
           <DeleteRoundedIcon className="align-middle" />
         </button>
       </main>
-      <h1 className="w-full text-3xl text-right">{`총지출 : ${totalCosts}₩`}</h1>
+      <h1 className="w-full text-3xl text-right">{`총 지출 : ${totalCosts}₩`}</h1>
     </div>
   );
 };
